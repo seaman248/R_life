@@ -22,7 +22,7 @@ shinyServer(function(input, output, session) {
   })
   
   output$life_matrix <- renderPlot({
-    image(values$m)
+    image(values$m, axes=F, col=c('white', 'black'), useRaster = T)
   })
   
 })
