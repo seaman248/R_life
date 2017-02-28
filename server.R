@@ -1,28 +1,28 @@
-#
-# This is the server logic of a Shiny web application. You can run the 
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
 
 source('./functions/random_matrix.R')
 source('./functions/timeout.R')
 source('./functions/step.R')
 
-# Define server logic required to draw a histogram
-shinyServer(function(input, output) {
+
+shinyServer(function(input, output, session) {
   
+  values <- reactiveValues(m=random_matrix(10))
   
-  life_matrix <- reactive({
-    for(i in 1:5){
-      output$distPlot <- random_matrix(10)
-    }
+  observeEvent(input$stepButton, {
+    values$m <- step(values$m)
   })
   
-  output$distPlot <- life_matrix[[1]]
+  observe({
+    values$m <- random_matrix(input$dim)
+  })
+  
+  observeEvent(input$reset, {
+    values$m <- random_matrix(input$dim)
+  })
+  
+  output$life_matrix <- renderPlot({
+    image(values$m)
+  })
   
 })
