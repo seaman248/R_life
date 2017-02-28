@@ -11,6 +11,7 @@ library(shiny)
 
 source('./functions/random_matrix.R')
 source('./functions/timeout.R')
+source('./functions/step.R')
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
