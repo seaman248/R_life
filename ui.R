@@ -3,7 +3,7 @@ library(shiny)
 shinyUI(fluidPage(
     tags$h1('Life Game'),
     column(4, wellPanel(
-      sliderInput('dim', 'Dim', min=5, max=50, value = 10),
+      sliderInput('dim', 'Dim', min=5, max=500, value = 10),
       actionButton(label='Next step', inputId = 'stepButton'),
       actionButton(label='Reset', inputId='reset'),
       tags$h2('Rules:'),
@@ -15,6 +15,6 @@ shinyUI(fluidPage(
       )
     )),
     column(6, 
-      plotOutput('life_matrix', width = 400, height = 400)
+      plotOutput('life_matrix', width = 500, height = 500)
     )
 ))
