@@ -1,1 +1,1 @@
-# Life game by Shiny and R
+# Life game by using R and Shiny
