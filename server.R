@@ -1,7 +1,6 @@
 library(shiny)
 
 source('./functions/random_matrix.R')
-source('./functions/timeout.R')
 source('./functions/step.R')
 
 
